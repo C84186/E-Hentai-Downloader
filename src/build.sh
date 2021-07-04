@@ -5,7 +5,9 @@ meta_js_path="../e-hentai-downloader.meta.js"
 parts_js_dir="./"
 
 # clear the bundle
-echo "" >"$output_path"
+cat "$meta_js_path">"$output_path"
+
+browserify ${parts_js_dir}/*.js.require > 02_includes.js
 
 find "$parts_js_dir" -maxdepth 1 -follow -type f -print | sort -V | while read -r f; do
     case "$f" in
@@ -16,4 +18,3 @@ find "$parts_js_dir" -maxdepth 1 -follow -type f -print | sort -V | while read -
     esac
 done
 
-browserify "$output_path" -o "$output_path"
