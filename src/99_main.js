@@ -1,3 +1,7 @@
+var FileSaver = require('file-saver');
+const saveAs = FileSaver.saveAs;
+
+var JSZip = require("jszip");
 
 var zip;
 var imageList = [];
